@@ -31,7 +31,7 @@ function getbookListUrl(pageNumber) {
 }
 
 function getBookDetail(isbn13) {
-  return `http://www.aladin.co.kr/ttb/api/ItemLookUp.aspx?ttbkey=${API_KEY}&itemIdType=ISBN13&ItemId=${isbn13}&output=js&Version=20131101&OptResult=ebookList,usedList,Toc,ratingInfo,authors`;
+  return `http://www.aladin.co.kr/ttb/api/ItemLookUp.aspx?ttbkey=${API_KEY}&itemIdType=ISBN13&ItemId=${isbn13}&output=js&Version=20131101&Cover=Big&OptResult=ebookList,usedList,Toc,ratingInfo,authors`;
 }
 
 function getBookPath(idx) {
