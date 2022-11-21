@@ -1,5 +1,6 @@
 const bookServ = require('../services/book.service');
 const myUtil = require('../utils/myutil.js');
+const {authMiddleware} = require('../middlewares/middleware');
 
 async function createBook(req, res) {
   const book = ({
@@ -21,8 +22,11 @@ async function createBook(req, res) {
 }
 
 const findBooks = async (req, res) => {
+  if (req.query.showMyBook) {
+    authMiddleware(req, res, () => {});
+  }
   let serchOption = req.query;
-  serchOption = { ...serchOption, booksId: req.params.id };
+  serchOption = { ...serchOption, booksId: req.params.id, usersId: req.userInfo?.id };
   const result = await bookServ.findBooks(serchOption);
   res.json(result);
 };
