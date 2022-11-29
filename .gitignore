@@ -1,6 +1,13 @@
+# Project MiilieIsLibrary
+schema.sql
+package-lock.json
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,visualstudiocode,node
 
+
+
+# lee sang yun
+*_.sql
 ### Linux ###
 *~
 
@@ -241,3 +248,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,visualstudiocode,node
+

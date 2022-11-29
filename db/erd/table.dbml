@@ -1,0 +1,76 @@
+table users as u {
+  id int [pk, increment, not null]
+  nickname varchar(50) [not null]
+  password varchar(100) [not null]
+  email varchar(100) [not null, unique]
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']
+}
+
+table books as b {
+  id int [pk, increment, not null]
+  title varchar(500) [not null]
+  cover_img varchar(500) [not null]
+  toc varchar (10000)
+  introduction varchar(3000) [not null]
+  categories_id int [not null, ref: > c.id]
+  publish_time varchar(100)
+  publisher varchar(100)
+  page int
+  rating_score decimal(3,1) 
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']
+}
+
+table authors as a {
+  id int [pk, increment, not null]
+  author_name varchar(50) [not null]
+  author_intro varchar(3000) [not null]
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']
+}
+
+table books_authors as ba {
+  id int [pk, increment, not null]
+  authors_id int [not null, ref: > a.id]
+  books_id int [not null, ref: > b.id]
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']  
+}
+
+table reviews as r {
+  id int [pk, increment, not null]
+  content varchar(300) [not null]
+  books_id int [not null, ref: > b.id]
+  users_id int [not null, ref: > u.id]
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']  
+}
+
+table categories as c {
+  id int [pk, increment, not null]
+  content varchar(100) [not null, unique]
+  created_at datetime [not null, default: `now()`]
+  updated_at "datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP" [not null,note:'update time']  
+  
+}
+
+table favorites as f {
+  id int [pk, increment, not null]
+  users_id int [ref: > u.id]
+  books_id int [ref: > b.id]
+  Indexes {
+    (users_id, books_id) [unique]
+  }
+}
+
+table bookshelves as bs {
+  id int [pk, increment, not null]
+  users_id int [ref: > u.id]
+  books_id int [ref: > b.id]
+  Indexes {
+    (users_id, books_id) [unique]
+  }
+}
+
+

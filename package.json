@@ -4,20 +4,34 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "db": "node ./db/openapi/createbookdata.js",
+    "distribute": "npm i && pm2 start server.js --name millie -i max"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^1.1.3",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "nodemon": "^2.0.16",
+    "morgan": "^1.10.0",
+    "pm2": "^5.2.2",
     "prettier": "^2.7.1"
   },
   "dependencies": {
+    "async-mutex": "^0.4.0",
+    "bcryptjs": "^2.4.3",
+    "cli-color": "^2.0.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.8.0",
+    "typeorm": "^0.3.10"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
