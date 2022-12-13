@@ -2,11 +2,7 @@ const { yellow, red, blue, green } = require('cli-color');
 
 function asyncWrap(asyncController) {
   return async (req, res, next) => {
-    try {
-      await asyncController(req, res, next);
-    } catch (error) {
-      next(error);
-    }
+    await asyncController(req, res, next).catch(next);
   };
 }
 
